@@ -7,7 +7,6 @@ const db = new Database();
 
 // Creates a new Discord bot
 const client = new Discord.Client({ intents: [
-    //32767
     Discord.GatewayIntentBits.Guilds,
     Discord.GatewayIntentBits.GuildMessages,
     Discord.GatewayIntentBits.MessageContent
@@ -58,32 +57,10 @@ async function scrapeData(request) {
             break;
     }
 
+    // Waits for selector to load and replies with remaining time until event trigger
     const data = await page.waitForSelector(selector);
     request.reply(String(await data?.evaluate(el => el.textContent)))
-
-
-
-    /*if (request.content === '$helltide') {
-        const helltideSelector = await page.waitForSelector("#tableHelltideNext");
-        const helltideTime = request.reply(String(await helltideSelector?.evaluate(el => el.textContent)))
-
-    }
-    const bossSelector = await page.waitForSelector("#tableBossNext");
-    const helltideSelector = await page.waitForSelector("#tableHelltideNext");
-    const legionSelector = await page.waitForSelector("#tableLegionNext");
-    
-    const bossTime = await bossSelector?.evaluate(el => el.textContent)
-    const helltideTime = await helltideSelector?.evaluate(el => el.textContent)
-    const legionTime = await legionSelector?.evaluate(el => el.textContent)*/
-
-    //console.log(bossTime, helltideTime, legionTime);
-    //console.log(string(helltideTime).type)
-
-    //return helltideTime
 }
-
-
-
 
 
 client.login(config.token);
