@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 const Database = require('@replit/database');
+const config = require('./config.json')
 
 const db = new Database();
 
@@ -58,4 +59,4 @@ async function scrapeData(request) {
 
 
 
-client.login('MTEyMDQ4NTkyMzgwMTU1MDk4OA.GxTlhx.Ks6-jss6xV4ez3BILxlMZtUr6FgkxmtDfNU0Ww');
+client.login(config.token);
