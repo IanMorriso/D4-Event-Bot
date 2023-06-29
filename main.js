@@ -15,19 +15,22 @@ const client = new Discord.Client({ intents: [
 
 
 
-
+// Confirms launch of bot
 client.once('ready', () => {
     console.log('client ready');
 })
 
+
+// Checks for message in discord channel
 client.on('messageCreate', message => {
 
     if (message.author.bot) return
 
-    if (message.content === "$helltide") {
-        scrapeData(message);
+    if (message.content === "$helltide" ||
+        message.content === "$boss" ||
+        message.content === "$legion") {
+            scrapeData(message);
     }
-
 })
 
 
